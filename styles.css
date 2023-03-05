@@ -29,6 +29,7 @@
 }
 
 .display {
+    grid-column: 1/-1;
     width: 285px;
     height: 95px;
     background: #D9D9D9;
@@ -45,16 +46,15 @@
 
 .previous-operand {
     background: none;
-    font-family: 'DotGothic16', sans-serif;
-    font-size: 1.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.5em;
     margin: 10px;
 }
 
 .current-operand {
-    font-size: 2.5rem;
+    font-size: 2.5em;
     background: none;
-
-    font-family: 'DotGothic16', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 10px;
 
 }
@@ -78,6 +78,7 @@
 
 .button {
     background: none;
+    -webkit-appearance: none;
 }
 
 #acBtn,
