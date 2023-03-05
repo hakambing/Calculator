@@ -76,6 +76,7 @@
     background: #D9D9D9;
     color: #000000;
     -webkit-appearance: none;
+    touch-action: manipulation;
 }
 
 .button {
