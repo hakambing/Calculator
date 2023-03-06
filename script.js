@@ -48,27 +48,53 @@ class Calculator {
             case '÷':
                 computation = prev / current
                 break
-            default: 
+            default:
                 return
         }
-        this.currentOperand = computation.toFixed(2)
+        if (computation % 1 != 0) {
+            this.currentOperand = computation.toFixed(2)
+        }else{
+            this.currentOperand = computation
+        }
         this.operation = undefined
         this.previousOperand = ''
     }
 
-    getDisplayNumber(number){
+    percent(){
+        let percentified
+        const current = parseFloat(this.currentOperand)
+        if (isNaN(current)) return
+
+        percentified = current / 100
+        this.currentOperand = percentified
+        this.operation = undefined
+        this.previousOperand = ''
+    }
+
+    negative(){
+        let negative
+        const current = parseFloat(this.currentOperand)
+        if (isNaN(current)) return
+
+        negative = current * -1
+        this.currentOperand = negative
+        this.operation = undefined
+        this.previousOperand = ''
+    }
+
+    getDisplayNumber(number) {
         const stringNumber = number.toString()
         const integerDigits = parseFloat(stringNumber.split('.')[0])
         const decimalDigits = stringNumber.split('.')[1]
         let integerDisplay
-        if (isNaN(integerDigits)){
+        if (isNaN(integerDigits)) {
             integerDisplay = ''
         } else {
-            integerDisplay = integerDigits.toLocaleString('en',{
-                maximumFractionDigits:0
+            integerDisplay = integerDigits.toLocaleString('en', {
+                maximumFractionDigits: 0
             })
         }
-        if (decimalDigits != null){
+        if (decimalDigits != null) {
             return `${integerDisplay}.${decimalDigits}`
         } else {
             return integerDisplay
@@ -78,12 +104,12 @@ class Calculator {
     updateDisplay() {
         this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
         if (this.operation != null) {
-            this.previousOperandTextElement.innerText = 
-            `${this.getDisplayNumber(this.previousOperand)}${this.operation}`
+            this.previousOperandTextElement.innerText =
+                `${this.getDisplayNumber(this.previousOperand)}${this.operation}`
         } else {
             this.previousOperandTextElement.innerText = ''
         }
-        
+
     }
 }
 
@@ -126,5 +152,15 @@ allClearButton.addEventListener('click', button => {
 
 deleteButton.addEventListener('click', button => {
     calculator.delete()
+    calculator.updateDisplay()
+})
+
+percentButton.addEventListener('click', button => {
+    calculator.percent()
+    calculator.updateDisplay()
+})
+
+negativeButton.addEventListener('click', button => {
+    calculator.negative()
     calculator.updateDisplay()
 })
