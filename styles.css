@@ -79,6 +79,11 @@
     touch-action: manipulation;
 }
 
+.butang:active {
+    background-color: rgb(187, 186, 186);
+    transform: translateY(4px);
+}
+
 .button {
     background: none;
     color: #000000;
